@@ -19,79 +19,344 @@ st.set_page_config(
 )
 
 # ==========================================
-# CUSTOM DESIGN
+# LIGHT THEME DESIGN
 # ==========================================
 
 st.markdown("""
 <style>
-    .stApp {
-        background-color: #0e1117;
-        color: #f1f5f9;
-    }
 
-    [data-testid="stSidebar"] {
-        background-color: #151b28;
-        border-right: 1px solid #263244;
-    }
+/* MAIN APPLICATION */
 
-    .main-title {
-        font-size: 34px;
-        font-weight: 800;
-        color: #60a5fa;
-        margin-bottom: 0;
-    }
+.stApp {
+    background-color: #f5f7fb;
+    color: #172033;
+}
 
-    .subtitle {
-        color: #94a3b8;
-        font-size: 14px;
-        margin-bottom: 25px;
-    }
+[data-testid="stHeader"] {
+    background-color: #f5f7fb;
+}
 
-    .metric-card {
-        background: #182233;
-        border: 1px solid #29384e;
-        border-radius: 12px;
-        padding: 20px;
-        min-height: 115px;
-    }
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
 
-    .metric-label {
-        color: #94a3b8;
-        font-size: 14px;
-    }
+/* SIDEBAR */
 
-    .metric-value {
-        color: #f8fafc;
-        font-size: 28px;
-        font-weight: 700;
-        margin-top: 8px;
-    }
+[data-testid="stSidebar"] {
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+}
 
-    .section-title {
-        font-size: 21px;
-        font-weight: 700;
-        color: #e2e8f0;
-        margin-top: 20px;
-        margin-bottom: 12px;
-    }
+[data-testid="stSidebar"] > div:first-child {
+    background-color: #ffffff;
+}
 
-    div[data-testid="stMetric"] {
-        background: #182233;
-        border: 1px solid #29384e;
-        padding: 15px;
-        border-radius: 12px;
-    }
+[data-testid="stSidebar"] h2 {
+    color: #1e40af;
+    font-weight: 800;
+}
 
-    div[data-testid="stMetricLabel"] {
-        color: #94a3b8;
-    }
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] span {
+    color: #334155;
+}
 
-    .stButton button {
-        border-radius: 8px;
-        font-weight: 600;
-    }
+/* SIDEBAR NAVIGATION */
+
+[data-testid="stSidebar"] div[role="radiogroup"] {
+    gap: 8px;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label {
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    padding: 10px 12px;
+    color: #334155 !important;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label:hover {
+    background-color: #dbeafe;
+    border-color: #93c5fd;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff !important;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) p,
+[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) span {
+    color: #ffffff !important;
+}
+
+/* HEADINGS */
+
+h1, h2, h3, h4 {
+    color: #172554 !important;
+}
+
+.main-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1d4ed8;
+    margin-bottom: 0;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+/* TEXT */
+
+p, label, .stMarkdown {
+    color: #334155;
+}
+
+[data-testid="stCaptionContainer"] {
+    color: #64748b;
+}
+
+/* METRIC CARDS */
+
+div[data-testid="stMetric"] {
+    background-color: #ffffff;
+    border: 1px solid #dbe3ef;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: #64748b !important;
+}
+
+div[data-testid="stMetricLabel"] p {
+    color: #64748b !important;
+    font-weight: 600;
+}
+
+div[data-testid="stMetricValue"] {
+    color: #172554 !important;
+    font-weight: 750;
+}
+
+div[data-testid="stMetricDelta"] {
+    color: #475569 !important;
+}
+
+/* CUSTOM METRIC CARDS */
+
+.metric-card {
+    background-color: #ffffff;
+    border: 1px solid #dbe3ef;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 115px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.metric-label {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.metric-value {
+    color: #1e40af;
+    font-size: 28px;
+    font-weight: 750;
+    margin-top: 8px;
+}
+
+/* BUTTONS */
+
+.stButton button,
+.stFormSubmitButton button {
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid #cbd5e1;
+    transition: all 0.2s ease;
+}
+
+.stButton button:not([kind="primary"]),
+.stFormSubmitButton button:not([kind="primary"]) {
+    background-color: #ffffff;
+    color: #1e40af;
+}
+
+.stButton button:hover {
+    border-color: #2563eb;
+    color: #1d4ed8;
+}
+
+/* PRIMARY BUTTONS */
+
+.stButton button[kind="primary"],
+.stFormSubmitButton button[kind="primary"] {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: 1px solid #2563eb;
+}
+
+.stButton button[kind="primary"]:hover,
+.stFormSubmitButton button[kind="primary"]:hover {
+    background-color: #1d4ed8;
+    color: #ffffff;
+}
+
+/* INPUT FIELDS */
+
+.stTextInput input,
+.stTextArea textarea,
+.stSelectbox div[data-baseweb="select"],
+.stNumberInput input {
+    background-color: #ffffff !important;
+    color: #172033 !important;
+    border-color: #cbd5e1 !important;
+    border-radius: 8px;
+}
+
+.stTextInput input:focus,
+.stTextArea textarea:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 1px #2563eb;
+}
+
+/* SELECTBOX TEXT */
+
+[data-baseweb="select"] span {
+    color: #172033 !important;
+}
+
+/* CONTAINERS */
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: #ffffff;
+    border-color: #dbe3ef !important;
+    border-radius: 12px;
+}
+
+/* EXPANDERS */
+
+[data-testid="stExpander"] {
+    background-color: #ffffff;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+}
+
+[data-testid="stExpander"] summary {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* TABLES */
+
+[data-testid="stDataFrame"] {
+    background-color: #ffffff;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+}
+
+/* ALERTS */
+
+[data-testid="stAlert"] {
+    border-radius: 10px;
+}
+
+/* DIVIDERS */
+
+hr {
+    border-color: #e2e8f0;
+}
+
+/* CHART BACKGROUND */
+
+[data-testid="stPlotlyChart"] {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+/* JSON AND CODE */
+
+[data-testid="stJson"],
+.stCodeBlock {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+/* SPINNER */
+
+.stSpinner > div {
+    border-top-color: #2563eb !important;
+}
+
+/* LINKS */
+
+a {
+    color: #2563eb !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
+
+
+# ==========================================
+# CHART THEME HELPER
+# ==========================================
+
+def apply_light_chart(fig):
+    fig.update_layout(
+        template="plotly_white",
+        paper_bgcolor="#ffffff",
+        plot_bgcolor="#ffffff",
+        font=dict(
+            family="Arial",
+            color="#334155",
+            size=13
+        ),
+        title_font=dict(
+            color="#172554",
+            size=18
+        ),
+        legend=dict(
+            font=dict(color="#334155")
+        ),
+        margin=dict(l=30, r=30, t=65, b=30)
+    )
+
+    fig.update_xaxes(
+        showgrid=True,
+        gridcolor="#e9eef5",
+        zerolinecolor="#cbd5e1",
+        color="#475569"
+    )
+
+    fig.update_yaxes(
+        showgrid=True,
+        gridcolor="#e9eef5",
+        zerolinecolor="#cbd5e1",
+        color="#475569"
+    )
+
+    return fig
 
 
 # ==========================================
@@ -241,8 +506,6 @@ if page == "Dashboard":
 
         try:
 
-            # REQUEST STATISTICS
-
             history = get_request_history()
 
             if history:
@@ -278,8 +541,6 @@ if page == "Dashboard":
             c4.metric("Success Rate", f"{success_rate:.1f}%")
 
             st.divider()
-
-            # MONITORING STATISTICS
 
             st.subheader("📡 Live API Monitoring")
 
@@ -335,8 +596,6 @@ if page == "Dashboard":
 
                 st.divider()
 
-                # INDIVIDUAL API STATUS
-
                 st.subheader("🌐 Individual API Status")
 
                 for api in apis:
@@ -390,8 +649,6 @@ if page == "Dashboard":
 
                 st.divider()
 
-                # UPTIME CHART
-
                 st.subheader("📈 API Uptime Comparison")
 
                 uptime_df = pd.DataFrame([
@@ -410,15 +667,16 @@ if page == "Dashboard":
                     y="Uptime (%)",
                     color="Uptime (%)",
                     range_y=[0, 100],
-                    title="Uptime Percentage by API"
+                    title="Uptime Percentage by API",
+                    color_continuous_scale="Blues"
                 )
+
+                fig1 = apply_light_chart(fig1)
 
                 st.plotly_chart(
                     fig1,
                     use_container_width=True
                 )
-
-                # RESPONSE TIME CHART
 
                 st.subheader("⏱️ Response Time Trends")
 
@@ -464,6 +722,8 @@ if page == "Dashboard":
                         title="API Response Time Over Time"
                     )
 
+                    fig2 = apply_light_chart(fig2)
+
                     st.plotly_chart(
                         fig2,
                         use_container_width=True
@@ -484,8 +744,6 @@ if page == "Dashboard":
                 )
 
             st.divider()
-
-            # RECENT REQUESTS
 
             st.subheader("📜 Recent API Requests")
 
@@ -809,8 +1067,14 @@ elif page == "Analytics":
                 x="Result",
                 y="Requests",
                 color="Result",
-                title="Successful and Failed Requests"
+                title="Successful and Failed Requests",
+                color_discrete_map={
+                    "Successful": "#16a34a",
+                    "Failed": "#dc2626"
+                }
             )
+
+            fig1 = apply_light_chart(fig1)
 
             st.plotly_chart(
                 fig1,
@@ -838,6 +1102,12 @@ elif page == "Analytics":
                 title="Distribution of HTTP Status Codes"
             )
 
+            fig2.update_layout(
+                template="plotly_white",
+                paper_bgcolor="#ffffff",
+                font=dict(color="#334155")
+            )
+
             st.plotly_chart(
                 fig2,
                 use_container_width=True
@@ -858,6 +1128,8 @@ elif page == "Analytics":
                     "response_time": "Response Time (ms)"
                 }
             )
+
+            fig3 = apply_light_chart(fig3)
 
             st.plotly_chart(
                 fig3,
@@ -909,8 +1181,6 @@ elif page == "API Monitoring":
     )
 
     st.divider()
-
-    # ADD NEW API
 
     st.subheader("➕ Add API to Monitor")
 
@@ -988,8 +1258,6 @@ elif page == "API Monitoring":
 
     st.divider()
 
-    # MONITORED API LIST
-
     st.subheader("📋 Your Monitored APIs")
 
     if st.button("🔄 Refresh Monitoring List"):
@@ -1040,8 +1308,6 @@ elif page == "API Monitoring":
                             key=f"delete_{api_id}",
                             use_container_width=True
                         )
-
-                    # CHECK API STATUS
 
                     if check_clicked:
 
@@ -1104,8 +1370,6 @@ elif page == "API Monitoring":
                                 f"Could not check API: {error}"
                             )
 
-                    # DELETE API
-
                     if delete_clicked:
 
                         try:
@@ -1134,8 +1398,6 @@ elif page == "API Monitoring":
                             st.error(
                                 f"Delete failed: {error}"
                             )
-
-                    # MONITORING HISTORY
 
                     with st.expander(
                         f"📜 View History — {name}"
@@ -1206,6 +1468,8 @@ elif page == "API Monitoring":
                                         }
                                     )
 
+                                    fig = apply_light_chart(fig)
+
                                     st.plotly_chart(
                                         fig,
                                         use_container_width=True
@@ -1268,8 +1532,6 @@ elif page == "Alert History":
             "total_alerts",
             len(alerts)
         )
-
-        # ALERT STATISTICS
 
         down_alerts = sum(
             1 for alert in alerts
